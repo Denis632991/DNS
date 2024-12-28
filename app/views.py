@@ -35,8 +35,9 @@ class ProductUpdateView(UpdateView):
 
 class ProductDeleteView(DeleteView):
     model = Product
-    template_name = 'product_confirm_delete.html'
+    template_name = 'product_confirm.html'
     success_url = reverse_lazy('product-list')
+    context_object_name = 'products'
 
 def search(request):
     form = SearchForm()
@@ -48,5 +49,5 @@ def search(request):
             name = form.cleaned_data['name']
             results = Product.objects.filter(name= name)
 
-    return render(request, 'main.html', {'form': form, 'results': results})
+    return render(request, 'product_list.html', {'form': form, 'results': results})
 
