@@ -1,0 +1,11 @@
+<h1>Список продуктов</h1>
+<a href="{% url 'product-create' %}">Добавить новый продукт</a>
+<ul>
+    {% for product in products %}
+        <li>
+            <a href="{% url 'product-detail' product.pk %}">{{ product.name }}</a>
+            <a href="{% url 'product-update' product.pk %}">Редактировать</a>
+            <a href="{% url 'product-delete' product.pk %}">Удалить</a>
+        </li>
+    {% endfor %}
+</ul>
